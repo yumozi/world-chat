@@ -1,7 +1,7 @@
 const Map = () => {
     return (
         <div>
-            "Map"
+            Map
         </div>
     )
 }

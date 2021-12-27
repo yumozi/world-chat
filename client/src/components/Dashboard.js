@@ -1,9 +1,12 @@
 import Sidebar from "./Sidebar"
+import Chat from "./Chat"
+import "./Dashboard.css"
 
 const Dashboard = () => {
     return (
-        <div className="d-flex" style={{ height: '100vh' }}>
+        <div className="dashboard">
             <Sidebar />
+            <Chat />
         </div>
     )
 }

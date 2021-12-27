@@ -1,40 +1,47 @@
-import { useState } from 'react'
-import { Tab, Nav, Button } from 'react-bootstrap'
-import Conversations from './Conversations'
-import Contacts from './Contacts'
+import "./Sidebar.css"
+import SidebarChat from "./SidebarChat"
 
-const CONVERSATIONS_KEY = 'conversations'
-const CONTACTS_KEY = 'contacts'
+import DonutLargeIcon from '@mui/icons-material/DonutLarge';
+import ChatIcon from '@mui/icons-material/Chat';
+import MoreVertIcon from '@mui/icons-material/MoreVert';
+import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
+import { Avatar, IconButton } from '@mui/material';
+
+import pekora from '../assets/pekora_portrait.png'
 
 const Sidebar = () => {
-    const [activeKey, setActiveKey] = useState(CONVERSATIONS_KEY)
-    const conversationsOpen = activeKey === CONVERSATIONS_KEY
-
-
     return (
-        <div style={{ width: '250px' }} className="d-flex flex-column border-right" >
-        <Tab.Container activeKey={activeKey} onSelect={setActiveKey}>
-          <Nav variant="tabs" className="justify-content-center">
-            <Nav.Item>
-              <Nav.Link eventKey={CONVERSATIONS_KEY}>Conversations</Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-              <Nav.Link eventKey={CONTACTS_KEY}>Contacts</Nav.Link>
-            </Nav.Item>
-          </Nav>
-          <Tab.Content className="overflow-auto flex-grow-1" style={{ borderRight: '2px solid'}}>
-            <Tab.Pane eventKey={CONVERSATIONS_KEY}>
-              <Conversations />
-            </Tab.Pane>
-            <Tab.Pane eventKey={CONTACTS_KEY}>
-              <Contacts />
-            </Tab.Pane>
-          </Tab.Content>
-        </Tab.Container>
-        <Button>
-            New {conversationsOpen ? 'Conversation' : 'Contact'}
-        </Button>
-      </div>
+        <div className="sidebar">
+          <div className="sidebar__header">
+            <Avatar src={pekora} />
+            <div className="sidebar__headerRight">
+                <IconButton>
+                  <DonutLargeIcon />
+                </IconButton>
+                <IconButton>
+                  <ChatIcon />
+                </IconButton>
+                <IconButton>
+                  <MoreVertIcon />
+                </IconButton>
+            </div>
+          </div>
+
+          <div className="sidebar__search">
+            <div className="sidebar__searchContainer">
+              <SearchOutlinedIcon />
+              <input placeholder="Search or start new chat" type="text" />
+            </div>
+          </div>
+
+          <div className="sidebar__chats">
+            <SidebarChat />
+            <SidebarChat />
+            <SidebarChat />
+          </div>   
+
+
+        </div>
     )
 }
 
