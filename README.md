@@ -1,4 +1,4 @@
 # World Chat
 
-React-based social media that encourages connectedness around the world. 
+React-based social media that promotes connectedness for people around the world.
 (Work in progress). 
